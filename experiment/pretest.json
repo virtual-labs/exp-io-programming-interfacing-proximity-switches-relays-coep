@@ -2,36 +2,62 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What is the primary purpose of a relay in electronic circuits?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "Amplify signals",
+        "b": "Convert DC to AC",
+        "c": "Electrically control a switch",
+        "d": " Measure current"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
-      },
-      "correctAnswer": "a",
+    
+      "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "Which Arduino function is used to set a pin as output?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "pinMode()",
+        "b": "pinOut()",
+        "c": "setPin()",
+        "d": "digitalMode()"
       },
-      "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+      
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+	  {
+      "question": "What type of device is a relay?",
+      "answers": {
+        "a": "Sensor",
+        "b": "Output device",
+        "c": "Input device",
+        "d": "Microcontroller"
       },
+      
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+	  {
+      "question": "What is the typical state of a relay when no current flows through its coil?",
+      "answers": {
+        "a": "NO is connected to COM",
+        "b": "Both are disconnected",
+        "c": "Both are connected",
+        "d": "NC is connected to COM"
+      },
+      
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+	  {
+      "question": "Why is a resistor used with an LED?",
+      "answers": {
+        "a": "To increase brightness",
+        "b": "To prevent overheating",
+        "c": "To limit current",
+        "d": "To blink it"
+      },
+      
       "correctAnswer": "c",
       "difficulty": "beginner"
     }
