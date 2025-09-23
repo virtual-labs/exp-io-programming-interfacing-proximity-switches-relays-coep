@@ -33,7 +33,7 @@ A 5 V relay is an electromechanical switch that is turned on by a small electric
 -   Power Sources: 12 V DC Power Supply  and 5 V DC Power Supply from Arduino 5V pin
 
 ### Microcontroller Connections: 
-Proximity sensor is connected to digital I/O pin of Arduino and the pin is being configured as digital input pin to sense the sensor output as logic HIGH or logic LOW as per sensor activation. Similarly, the output is connected to NPN transistor to drive the replay where +12V DC motor is connected as O/P device. 
+Proximity sensor is connected to digital I/O pin of Arduino and the pin is being configured as digital input pin to sense the sensor output as logic HIGH or logic LOW as per sensor activation. Similarly, the output is connected to NPN transistor to drive the replay where +12V DC motor is connected as O/P device. <br>
 ![*Sensor* ](images/switchblock.png) <br>
 Fig: Block diagram of connection
 
