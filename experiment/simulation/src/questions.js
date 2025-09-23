@@ -8,6 +8,7 @@
 			timerMasterJson.mimic = $("#counter").text();
 			seconds = 0;
 			 updateCounter();
+			   $("#centerText1").html('QUESTIONS');
 
 			$("#canvas-div").html('');
 			
@@ -77,7 +78,7 @@
 
 						if (myRadio == null) {
 							flag = flag && false;
-							showSwal("<b class='boldTextGreen'>Please attempt all the questions</b>","warning");
+							showSwal("Please attempt all the questions","warning");
 						
 							$("body").css("padding","0px");
 							

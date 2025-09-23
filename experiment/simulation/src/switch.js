@@ -4,6 +4,7 @@ function Mimic_Switch(){
     $('#canvas-div').removeAttr('width');
 	$('#canvas-div').removeAttr('height');
 	timerMasterJson.configuration = $("#counter").text();
+	$("#generateCode,#compileCode,#executeCode").prop('disabled',true);
 	seconds = 0;
 	 updateCounter();
 	console.log(timerMasterJson);
