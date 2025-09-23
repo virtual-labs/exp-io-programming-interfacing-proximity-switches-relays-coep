@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="css/buttonStyle.css">
 <link rel="stylesheet" href="css/mainPage.css">
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/result.css">
 <link rel="stylesheet" href="css/transducer.css">
 <link rel="stylesheet" href="css/toastr.min.css">
 <style type="text/css">
@@ -47,6 +48,11 @@
 		#reset{
 			background-color: #ce513b;
 		}
+		
+@font-face { 
+		font-family: 'digital-clock-font'; 
+ 		src: url('font/digital-7.ttf'); 
+ 	} 
 </style>
 </head>
 
@@ -60,13 +66,19 @@
 	
 	
 	<div  class="row container-fluid" id="main-div1" style="margin : 5px 1px"">
-	<div class="col-sm-9" id="buttonDiv">
+	<div class="col-sm-8" id="buttonDiv">
 	</div>
 	<div class="col-sm-1" id="buttonDiv">
 	<button type="button" class="btn btn-info button3"  id="refresh" data-toggle="modal"><i class="fa fa-refresh"></i> <b>REFRESH</b></button>
 	</div>
 	<div class="col-sm-2" id="buttonDiv">
 	<button type="button" class="btn btn-danger button5" id="procedure" data-toggle="modal" data-target="#readProcedureModal"><b>READ PROCEDURE</b></button>
+	</div>
+	<div class="col-sm-1" id="buttonDiv">
+	<h5 id="counter" class=" btn1 timerStyle" >00:00:00</h5>
+	</div>
+	<div>
+	<button type="button" class="btn btn-danger btn1 button1"  id="report" style="margin-top:10px;"  hidden>Download report </button> 
 	</div>
 	</div>
 	<div class="row container-fluid"  style="margin-top: -20px" id="mainDiv">
@@ -331,8 +343,12 @@ var config = {
 <!-- <script type="text/javascript" src="src/questions.js"></script> -->
 <script type="text/javascript" src="src/configuration.js"></script>
 <script type="text/javascript" src="src/switch.js"></script>
+<script type="text/javascript" src="src/questionJson.js"></script>
+<script type="text/javascript" src="src/questions.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script type="text/javascript" src="src/toastr.min.js"></script>
+<script src="src/result.js"></script>
+<script src="src/timer.js"></script>
 
 <script>
     toastr.options = {
