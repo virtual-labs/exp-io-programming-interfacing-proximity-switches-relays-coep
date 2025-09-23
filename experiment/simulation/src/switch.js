@@ -3,7 +3,11 @@ function Mimic_Switch(){
     $("#centerText2").html('CONFIGURATION');
     $('#canvas-div').removeAttr('width');
 	$('#canvas-div').removeAttr('height');
-	var w =650;
+	timerMasterJson.configuration = $("#counter").text();
+	seconds = 0;
+	 updateCounter();
+	console.log(timerMasterJson);
+	var w = 650;
 	var h = 550;
 	
 	var width = $(window).width();
@@ -37,8 +41,12 @@ if(sensorType == 2){
 
 //var replay = paper.image("images/relay.png",x+300,y+400,150, 100);
 var checkStatus = paper.image("images/checkBtn1.png",x+380,y-10,130, 50);
-var min = paper.image("images/min.png",x+100,y-10,110, 50);
-var max = paper.image("images/max.png",x+220,y-10,110, 50);
+var next = paper.image("images/next.png",x+380,y-10,100, 40);
+next.hide();
+var scaleBox = paper.rect(x+160, y+120, 100, 40,5).attr({fill: "#edc26b",stroke: "#2c3e50", "stroke-width": 2});  // motor rrect
+var line_scale = paper.path("M"+(x+180)+" "+(y+150)+"l 5 5 l -5 -5 l 5 -5 l -5 5 l  60 0 l -5 5 l 5 -5 l -5 -5 l 5 5 ").attr({'stroke-width':1.5,stroke: "#000"});
+var min = paper.image("images/minus.png",x+170,y+122,20, 20);
+var max = paper.image("images/plus.png",x+230,y+122,20, 20);
 var wave = paper.image("images/wave1.png",x+140,y+50,40, 40);
 if(material == 1){
 	object = paper.image("images/metal_img.png",x+200,y+30,100, 100).attr({ cursor: "pointer" });
@@ -50,6 +58,8 @@ if(material == 1){
 object.hide();
 min.hide();
 max.hide();
+line_scale.hide();
+scaleBox.hide();
 
 //  var quadCurve = paper.path("M"+(x+310)+" "+(y+118)+" l 50 -1").attr({
 //          stroke: "#3498db",
@@ -58,15 +68,16 @@ max.hide();
 
 
 var t = paper.path("M"+(x+50)+" "+(y+110)+"l  0 30 l 40 0 l 0 20").attr({'stroke-width':3,stroke: "#3498db"});
-var t = paper.path("M"+(x+45)+" "+(y+100)+"l  0 80 l 100 0 ").attr({'stroke-width':3,stroke: "#ed1f37"});
+var t = paper.path("M"+(x+45)+" "+(y+100)+"l  0 80 l 250 0 ").attr({'stroke-width':3,stroke: "#ed1f37"});
 var t = paper.path("M"+(x+40)+" "+(y+90)+"l  0 200 l 50 0 ").attr({'stroke-width':3,stroke: "#000"});
-var line_scale = paper.path("M"+(x+180)+" "+(y+140)+"l 8 8 l -8 -8 l 8 -8 l -8 8 l  60 0 l -8 8 l 8 -8 l -8 -8 l 8 8 ").attr({'stroke-width':1.5,stroke: "#000"});
+
+
 var ground1= paper.image("images/ground.png",x+160,y+450,30, 21);
 
 var ground1= paper.image("images/ground.png",x+550,y+140,20, 15);
 var ground1= paper.image("images/ground.png",x+75,y+160,20, 15);
 var t1 = paper.path("M"+(x+180)+" "+(y+450)+"l 0 -20  l 40 0 ").attr({'stroke-width':3});
-line_scale.hide();
+
 
   var img = paper.image("images/fan.png", x+510, y+45, 50, 45);
     paper.circle(x+535, y+70, 30).attr({'stroke-width':3});
@@ -298,23 +309,32 @@ var r1 = paper.path("M"+(x+560)+" "+(y+130)+"l  0 10").attr({'stroke-width':3,st
     // Store original position
     var originalX = x+200;
     var originalY = y+30;
-
+    var startValue = 10;
+		var endValue ;  var currentValue;
     // Function to move image to the left
     function moveImageLeft() {
+	
       object.animate(
-        { x: originalX - 50 }, // move 200px to the LEFT
+        { x: originalX - 5 }, // move 200px to the LEFT
         1000, // 1 second
         "easeInOut"
       );
+      originalX = originalX - 5 ;
+      startValue = startValue - 1
+       counter.attr("text", startValue);
     }
 
     // Function to reset image back
     function resetImage() {
+
       object.animate(
-        { x: originalX }, // back to original
+        { x: originalX + 5}, // back to original
         1000,
         "easeInOut"
       );
+        originalX = originalX + 5 ;
+        startValue = startValue +1;
+         counter.attr("text", startValue);
     }
 
     // Example calls
@@ -322,9 +342,9 @@ var r1 = paper.path("M"+(x+560)+" "+(y+130)+"l  0 10").attr({'stroke-width':3,st
 //    setTimeout(resetImage, 3000);     // reset after 3s
 	
 	
-	var endValue ;
+
 	 // Start and end values
-    var startValue = 20;
+   
     if(sensorType == 1){
 		endValue = 8;
 	}else{
@@ -334,12 +354,20 @@ var r1 = paper.path("M"+(x+560)+" "+(y+130)+"l  0 10").attr({'stroke-width':3,st
     var duration = 1000; // 1 second
 
     // Draw text
-    var counter = paper.text(x+205, y+130, startValue +'mm').attr({
+    var counter = paper.text(x+203, y+140, startValue).attr({
       "font-size": 10,
       "font-family": "Arial, Helvetica, sans-serif",
       "fill": "black"
     });
+    
+     var counter1 = paper.text(x+220, y+140, "mm").attr({
+      "font-size": 10,
+      "font-family": "Arial, Helvetica, sans-serif",
+      "fill": "black"
+    });
+    
 	counter.hide();
+	counter1.hide();
     var startTime = null;
     var animating = false;
 
@@ -418,7 +446,7 @@ var r1 = paper.path("M"+(x+560)+" "+(y+130)+"l  0 10").attr({'stroke-width':3,st
 
 	
 	paper.circle(x+390, y+160, 4.5).attr({fill: "blue", stroke: "black", "stroke-width": 2}), //power suplly +
-	paper.circle(x+150, y+180, 5).attr({fill: "red", stroke: "black", "stroke-width": 2}),   // sensor points red
+	paper.circle(x+300, y+180, 5).attr({fill: "red", stroke: "black", "stroke-width": 2}),   // sensor points red
 	
 	paper.circle(x+180, y+250, 0).attr({fill: "blue", stroke: "black", "stroke-width": 2}),// 5V supply point
 	paper.circle(x+90, y+290, 5).attr({fill: "black", stroke: "black", "stroke-width": 2}),// black line point
@@ -682,7 +710,7 @@ var  wrongflg;
 
 var  wrongAttempts = 0;
 checkStatus.click(function(){
-			
+		wrongAttempts++;	
 	if(coorectflg == 6 ){
 		statusFlag=true;				
 //		$("#plot").html("");
@@ -694,6 +722,10 @@ checkStatus.click(function(){
 		object.show();
 		line_scale.show();
 		counter.show();
+		min.show();
+       max.show();
+    	counter1.show();
+       scaleBox.show();
 		checkStatus.hide();
 
 		
@@ -706,15 +738,16 @@ checkStatus.click(function(){
 		disableAllPoints();
 		
 	}else if(coorectflg < 6 || wrongflg >= 1){
+		
 //		toastr.warning("Some Connections are missing.")
 		if(wrongAttempts < 3){
-			wrongAttempts++;
+			
 			showSwal('Some Connections are missing or wrong','error');
 		}else{
 			Swal.fire({
 					title: 'Appropriate connections',
 					html: `<div>
-                <img src='images/proximityCorrect.png' class='img-fluid' 
+                <img src='images/proximityCorrect  .png' class='img-fluid' 
                      style='border-style: double; border-color: black; display: block; margin: 10px auto; width: 100%; max-width: 1200px;'>
            </div>`,
 					width: '80%', // Increases the width of the modal
@@ -737,12 +770,25 @@ checkStatus.click(function(){
 		onTime1 = 1000/1000;
 		offTime1 = 0/1000;
 		setRedflag=true;
-	start(interval_plot1,onTime1,offTime1);
-	setTimeout(moveImageLeft, 1000);	
-	setTimeout(rotateLine, 1900);
-	setTimeout(blink, 1900);
-	
-	 setTimeout( startRotation, 2200);
+	if(startValue > 0){
+		moveImageLeft();
+		
+	if(startValue <= endValue){
+		rotateLine();
+		blink();
+		startRotation();
+		inputPt.show();
+		outputPt.show();
+		start(interval_plot1,onTime1,offTime1);
+		next.show();
+	}
+	}else{
+		showSwal('Object is in minimum range','warning');
+	}	
+//	setTimeout(rotateLine, 1900);
+//	setTimeout(blink, 1900);
+//	
+//	 setTimeout( startRotation, 2200);
 	    
   		
 	});
@@ -752,51 +798,70 @@ checkStatus.click(function(){
 		onTime1 = 0/1000;
 		offTime1 = 1000/1000;
 		setRedflag=false;
-		start(interval_plot1,onTime1,offTime1);
-		 
-		 setTimeout(resetImage, 1000);
 		
-		  setTimeout(resetLine, 1200);
-		  setTimeout( stopBlink, 1200);
+		resetImage();
 		 
-		   setTimeout( stopRotation, 1300);
+		 if(startValue > endValue){
+			 start(interval_plot1,onTime1,offTime1);
+			 resetLine();
+			 stopBlink();
+			 inputPt.hide();
+		  	outputPt.hide();
+			 stopRotation();
+		
+			 }
+		
+//		  setTimeout(resetLine, 1200);
+//		  setTimeout( stopBlink, 1200);
+//		 
+//		   setTimeout( stopRotation, 1300);
 	});
 	
 	
- object.mousedown(function () {
-      object.animate({x: originalX - 50}, 500, "easeInOut"); // move left & hold
-      	onTime1 = 1000/1000;
-		offTime1 = 0/1000;
-		setRedflag=true;
+	next.click(function(){
+		resultJson.mimic = wrongAttempts;
+			 $('#plot').prop('hidden',true);
+			  showQuestions();
 		
-		inputPt.show();
-		outputPt.show();
-
-	startCountdown();	
-	setTimeout(rotateLine, 600);
-	setTimeout(blink, 600);
+	})
 	
-	 setTimeout( startRotation, 700);
-	  setTimeout( start(interval_plot1,onTime1,offTime1), 700);
-    });
-
-    // When mouse button is released → return to original position
-    object.mouseup(function () {
-      object.animate({x: originalX}, 600, "easeInOut"); // go back smoothly
-      
-      	onTime1 = 0/1000;
-		offTime1 = 1000/1000;
-		setRedflag=false;
-		start(interval_plot1,onTime1,offTime1);
-		 inputPt.hide();
-		outputPt.hide();
-		resetCountdown();
-		
-		  setTimeout(resetLine, 600);
-		  setTimeout( stopBlink, 600);
-		 
-		   setTimeout( stopRotation, 650);
-    });
+	
+	
+	
+// object.mousedown(function () {
+//      object.animate({x: originalX - 50}, 500, "easeInOut"); // move left & hold
+//      	onTime1 = 1000/1000;
+//		offTime1 = 0/1000;
+//		setRedflag=true;
+//		
+//		inputPt.show();
+//		outputPt.show();
+//
+//	startCountdown();	
+//	setTimeout(rotateLine, 600);
+//	setTimeout(blink, 600);
+//	
+//	 setTimeout( startRotation, 700);
+//	  setTimeout( start(interval_plot1,onTime1,offTime1), 700);
+//    });
+//
+//    // When mouse button is released → return to original position
+//    object.mouseup(function () {
+//      object.animate({x: originalX}, 600, "easeInOut"); // go back smoothly
+//      
+//      	onTime1 = 0/1000;
+//		offTime1 = 1000/1000;
+//		setRedflag=false;
+//		start(interval_plot1,onTime1,offTime1);
+//		 inputPt.hide();
+//		outputPt.hide();
+//		resetCountdown();
+//		
+//		  setTimeout(resetLine, 600);
+//		  setTimeout( stopBlink, 600);
+//		 
+//		   setTimeout( stopRotation, 650);
+//    });
     
     
 	

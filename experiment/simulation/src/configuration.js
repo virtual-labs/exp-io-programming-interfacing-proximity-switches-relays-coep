@@ -1,4 +1,5 @@
-
+resultJson = {};
+timerMasterJson = {};
 //function mainPage1(){
 	$("#main-div-conf").html('');	
      $("#canvas-div").html('');	
@@ -154,6 +155,7 @@ var outputPinVal;
 var ledTypeVAl;
 var selectedValue;
 var selectedOutput;
+var wrongConfig = 0 ;
 $("#inputPinName").change(function(){
 		var selectEl = document.getElementById("inputPinName");
 		var selectedOption = selectEl.options[selectEl.selectedIndex];
@@ -188,21 +190,26 @@ $("#outputPinName").change(function(){
 		}else{
 			 if (selectedOutput == 2 && selectedValue == 2){
 //				toastr.warning("Input and output pin can not be same ");
-				
+				wrongConfig++;
 				showSwal('Input and output pin can not be same','warning');
 			 }else if (selectedOutput == 3 && selectedValue == 3){
 //				toastr.warning("Input and output pin can not be same ");
+				wrongConfig++;
 				showSwal('Input and output pin can not be same','warning');
 			 }else if (selectedOutput == 4 && selectedValue == 4){
+				 wrongConfig++;
 //				toastr.warning("Input and output pin can not be same ");
 				showSwal('Input and output pin can not be same','warning');
 			 }else if (selectedOutput == 5 && selectedValue == 5){
+				 wrongConfig++;
 //				toastr.warning("Input and output pin can not be same ");
 				showSwal('Input and output pin can not be same','warning');
 			 }else if (selectedOutput == 6 && selectedValue == 6){
+				 wrongConfig++;
 //				toastr.warning("Input and output pin can not be same ");
 				showSwal('Input and output pin can not be same','warning');
 			 }else if (selectedOutput == 7 && selectedValue == 7){
+				 wrongConfig++;
 //				toastr.warning("Input and output pin can not be same ");
 				showSwal('Input and output pin can not be same','warning');
 			 }
@@ -238,6 +245,7 @@ $("#ledtype").change(function(){
 		}else{	
 			
 			if(material == 2 && sensorType == 1){
+				wrongConfig++;
 				showSwal('Selected sensor type can not detect Non-Metal Object','warning');
 			}else{
 				if(material == 1){
@@ -263,6 +271,7 @@ $("#ledtype").change(function(){
 	var flag = false;
 
 $("#generateCode").click(function () {
+	
 //	$("#inputPinName").prop("disabled",true);
 // 	$("#outputPinName").prop("disabled",true);
 // 	$("#ledtype").prop("disabled",true);	
@@ -330,6 +339,7 @@ $("#compileCode").click(function(){
  
 
 $("#executeCode").click(function () {
+	wrongConfig++;
 	if(compileflag==true){
 		$("#modelMsg").html("<b class='boldTextGreen'>Code Executed Successfully.</b>");
 			iPinSelect = $("#inputPinName").val();
@@ -339,6 +349,8 @@ $("#executeCode").click(function () {
 			$("#canvas-div").html('');
 			$("#canvas-div1").html('');
 			$("#plot").prop("hidden",false);
+			resultJson.configuration = wrongConfig;
+			console.log(resultJson);
 			 Mimic_Switch();
 //			mimic(iPinSelect,oPinSelect,switchConfigSelect,LedConSelect);
     
