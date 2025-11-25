@@ -110,3 +110,13 @@ background: linear-gradient(90deg, rgba(125,176,169,1) 0%, rgba(78,109,114,1) 31
     font-family: 'digital-clock-font';
     letter-spacing: 1px;
 }
+
+.correctAnswer {
+    color: green !important;
+    font-weight: bold;
+}
+
+.wrongAnswer {
+    color: red !important;
+    text-decoration: line-through;
+}

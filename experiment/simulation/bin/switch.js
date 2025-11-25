@@ -747,7 +747,7 @@ checkStatus.click(function(){
 			Swal.fire({
 					title: 'Appropriate connections',
 					html: `<div>
-                <img src='images/proximityCorrect  .png' class='img-fluid' 
+                <img src='images/proximityCorrect.png' class='img-fluid' 
                      style='border-style: double; border-color: black; display: block; margin: 10px auto; width: 100%; max-width: 1200px;'>
            </div>`,
 					width: '80%', // Increases the width of the modal
