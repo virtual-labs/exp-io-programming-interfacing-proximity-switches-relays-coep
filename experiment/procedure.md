@@ -28,3 +28,4 @@
 - Read all the questions carefully and submit the answer
 - After submission, verify the answers 
 - Click on result button, "Result" page will displayed
+![*Sensor* ](images/Experiment2.png) <br>
