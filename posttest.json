@@ -1,0 +1,116 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "What does digitalWrite(11, HIGH) do in this experiment?",
+      "answers": {
+        "a": "Reads sensor value",
+        "b": "Turns off relay",
+        "c": "Turns on relay",
+        "d": "Resets Arduino"
+      },
+    
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What component is controlled by the relay in this circuit?",
+      "answers": {
+        "a": "Sensor",
+        "b": "LED",
+        "c": "Motor",
+        "d": "LCD"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "Which function causes delay between relay switching?",
+      "answers": {
+        "a": "delay()",
+        "b": "pause()",
+        "c": "wait()",
+        "d": "stop()"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "How many terminals does a relay typically have (excluding coil)?",
+      "answers": {
+        "a": "2",
+        "b": "3",
+        "c": "4",
+        "d": "6"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "What is the function of NO (Normally Open) pin on the relay?",
+      "answers": {
+        "a": "Always connected to COM",
+        "b": "For power input",
+        "c": "Ground connection",
+        "d": "Connected only when coil is energized"
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "What will happen if you connect relay GND to 5V?",
+      "answers": {
+        "a": " Circuit won’t work",
+        "b": "Relay works fine",
+        "c": "LED glows permanently",
+        "d": "Arduino restarts"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "Why use a relay instead of directly driving an LED with Arduino?",
+      "answers": {
+        "a": "It's easier",
+        "b": "For learning",
+        "c": "Relay can handle higher loads",
+        "d": "Saves code"
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "What happens when the relay coil is energized?",
+      "answers": {
+        "a": "NO connects to COM",
+        "b": "Nothing",
+        "c": "NC disconnects from COM",
+        "d": "LED blinks randomly"
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "Which pin sends control signals to relay?",
+      "answers": {
+        "a": "GND",
+        "b": "VCC",
+        "c": "Analog pin 0",
+        "d": "Digital pin 11"
+      },
+      "correctAnswer": "d",
+      "difficulty": "beginner"
+    },
+	{
+      "question": "What is the delay in the given code?",
+      "answers": {
+        "a": "500ms",
+        "b": "1000ms",
+        "c": "2000ms",
+        "d": "No delay"
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    }
+  ]
+}
